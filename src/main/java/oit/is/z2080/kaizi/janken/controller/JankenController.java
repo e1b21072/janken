@@ -1,23 +1,21 @@
 package oit.is.z2080.kaizi.janken.controller;
 
+import java.security.Principal;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import oit.is.z2080.kaizi.janken.model.Entry;
+
 @Controller
 public class JankenController {
-  @GetMapping("/janken")
-  public String janken() {
-    return "janken.html";
-  }
 
-  @PostMapping("/janken")
-  public String janken(@RequestParam String ZID, ModelMap model) {
-    model.addAttribute("ZID", ZID);
-    return "janken.html";
-  }
+  @Autowired
+  private Entry room;
 
   @PostMapping("/janken/start")
   public String jankenStart(@RequestParam String player_hand, ModelMap model) {
@@ -58,4 +56,15 @@ public class JankenController {
 
     return "janken.html";
   }
+
+  @GetMapping("/janken")
+  public String showLogin(Principal prin, ModelMap model) {
+    String loginUser = prin.getName();
+    this.room.addUser(loginUser);
+    model.addAttribute("room", this.room);
+    model.addAttribute("login_user", loginUser);
+
+    return "janken.html";
+  }
+
 }
