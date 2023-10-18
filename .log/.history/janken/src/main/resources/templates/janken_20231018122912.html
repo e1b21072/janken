@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>じゃんけんゲーム</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
@@ -31,7 +31,7 @@
   <div>
     <p>エントリー</p>
     <ul>
-      <li th:each="user : ${users}">[[${user}]]</li>
+      <li th:each="user : ${room.users}">[[${user}]]</li>
     </ul>
   </div>
 
