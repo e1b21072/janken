@@ -16,10 +16,11 @@ public class Janken {
         handMap.put(2, "Choki");
         handMap.put(3, "Pa");
 
-        int key = new Random().nextInt(3) + 1;
-        this.player2 = handMap.get(key);
+        int peace = new Random().nextInt(3) + 1;
+        this.player2 = handMap.get(peace);
     }
 
+  
     public Janken(String player1, String player2) {
         this.player1 = player1;
         this.player2 = player2;

@@ -13,10 +13,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class JankenController {
-    @Autowired
-    private UserMapper usermapper;
-    @Autowired
-    private MatchMapper matchmapper;
+  @Autowired
+  private MatchMapper matchmapper;
+  @Autowired
+  private UserMapper usermapper;
+    
 
     @GetMapping("/janken")
     public String janken(ModelMap model) {
@@ -61,6 +62,9 @@ public class JankenController {
     }
 }
 
+/**
+ * じゃんけんの結果を格納するクラス
+ */
 class Result extends Match {
     private String result;
 
