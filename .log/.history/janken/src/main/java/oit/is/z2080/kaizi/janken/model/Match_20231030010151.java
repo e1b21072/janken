@@ -51,5 +51,5 @@ public class Match {
 
     public void setActive(boolean isActive) {
         this.isActive = isActive;
-    }   
+    }
 }
