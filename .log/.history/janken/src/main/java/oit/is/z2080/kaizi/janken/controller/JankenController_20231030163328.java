@@ -35,7 +35,6 @@ public class JankenController {
         model.addAttribute("users", users);
 
         model.addAttribute("activematches", activeMatches);
-        }
 
         return "janken.html";
     }
@@ -69,7 +68,7 @@ public class JankenController {
             match.setUser1Hand(hand);
             match.setUser2Hand(game.getUser1Hand());
             match.setActive(true);
-            this.asynckekka.sync(match);
+            this.asynckekka.syncInsertMatchTable(match);
         }
 
         return "wait.html";

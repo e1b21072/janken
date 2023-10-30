@@ -30,12 +30,16 @@ public class JankenController {
         ArrayList<User> users = usermapper.selectAllUsers();
         ArrayList<Match> matches = matchmapper.selectAllMatches();
         ArrayList<MatchInfo> activeMatches = matchinfomapper.selectActiveMatches();
+        ArrayList<JankenResult> results  = new ArrayList<>();
 
         for (Match match : matches) {
+            JankenResult result = new JankenResult(match);
+            results.add(result);
+        }
         model.addAttribute("users", users);
+        model.addAttribute("history", results);
 
         model.addAttribute("activematches", activeMatches);
-        }
 
         return "janken.html";
     }
@@ -69,7 +73,7 @@ public class JankenController {
             match.setUser1Hand(hand);
             match.setUser2Hand(game.getUser1Hand());
             match.setActive(true);
-            this.asynckekka.sync(match);
+            this.asynckekka.syncInsertMatchTable(match);
         }
 
         return "wait.html";
